@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desa Cikondang</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Tabletop.js/1.5.1/tabletop.min.js"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+  <header class="bg-green-800 text-white py-4 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Desa Cikondang</h1>
+      <nav class="space-x-4">
+        <a href="#beranda" class="hover:underline">Beranda</a>
+        <a href="#profil" class="hover:underline">Profil</a>
+        <a href="#berita" class="hover:underline">Berita</a>
+        <a href="#kegiatan" class="hover:underline">Kegiatan</a>
+        <a href="#kontak" class="hover:underline">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="beranda" class="bg-cover bg-center h-96" style="background-image: url('https://source.unsplash.com/1600x900/?village,nature');">
+    <div class="bg-black bg-opacity-50 h-full flex items-center justify-center">
+      <h2 class="text-white text-4xl font-bold">Selamat Datang di Website Resmi Desa Cikondang</h2>
+    </div>
+  </section>
+
+  <section id="profil" class="py-10 px-4 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-4">Profil Desa</h2>
+    <p class="mb-4">Desa Cikondang terletak di Kecamatan Cingambul, Kabupaten Majalengka, Provinsi Jawa Barat dengan luas wilayah 330.96 hektar dan berada di ketinggian 620 meter di atas permukaan laut. Desa ini memiliki sejarah panjang yang berakar dari masa Kerajaan Talaga Manggung.</p>
+    <p>Visi desa adalah <strong>"Menciptakan Cikondang Rindang Indah Aman Nyaman dan Gemilang (RIANG) untuk Terwujudnya Desa yang Mandiri dan Bermartabat."</strong></p>
+  </section>
+
+  <section id="berita" class="bg-white py-10 px-4 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-6">Berita dan Kegiatan</h2>
+    <div id="beritaContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <p>Memuat berita...</p>
+    </div>
+  </section>
+
+  <section id="kontak" class="py-10 px-4 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-4">Kontak Kami</h2>
+    <p>Alamat: Jl. Desa No. 01, Desa Cikondang, Kecamatan Cingambul (45467)</p>
+    <p>Admin: Dandi Mahesa Budiman - <a href="tel:+6281295903161" class="text-blue-600">+62 812-9590-3161</a></p>
+    <p>Email: <a href="mailto:kasipem.cikondang@gmail.com" class="text-blue-600">kasipem.cikondang@gmail.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/pemdes_cikondang" target="_blank" class="text-blue-600">@pemdes_cikondang</a></p>
+  </section>
+
+  <footer class="bg-green-900 text-white text-center py-4 mt-10">
+    <p>&copy; 2025 Desa Cikondang - RIANG (Rindang Indah Aman Nyaman dan Gemilang)</p>
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      Tabletop.init({
+        key: 'https://docs.google.com/spreadsheets/d/1Jqlaf_bjqLZ-42T4IeSHzoEI1vhWCb76_e1sAJC7m0s/edit?usp=sharing',
+        simpleSheet: true,
+        callback: function(data) {
+          const container = document.getElementById('beritaContainer');
+          container.innerHTML = '';
+          data.forEach(berita => {
+            const div = document.createElement('div');
+            div.className = 'bg-gray-100 p-4 rounded shadow';
+            div.innerHTML = `
+              <h3 class="font-bold text-lg">${berita.Judul}</h3>
+              <p class="text-sm">${berita.Isi}</p>
+              <p class="text-xs text-gray-500 mt-2">${berita.Tanggal} - ${berita.Penulis}</p>
+            `;
+            container.appendChild(div);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
